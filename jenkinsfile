@@ -42,11 +42,10 @@ pipeline{
 					try{
 						withCredentials([usernamePassword(credentialsId: "jawadeshrinivas322022",usernameVariable:'DOCKER_USERNAME',passwordVariable: 'DOCKER_PASSWARD')])
 						docker.image(DOCKER_IMAGE_NAME).push(IMAGE_TAG) 
-						 }catch (Exception e) {
-                                 echo "Failed to build Docker image ${e.message}
-                                 error "Failed to build Docker image
+						 }catch(Exception e){
+                                 echo "Failed to build Docker image ${e.message}"
+                                 error "Failed to build Docker image"
                                  }
-
 					 }
 				 }
 		 }
