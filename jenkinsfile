@@ -8,7 +8,7 @@ pipeline{
 		IMAGE_TAG = '1.0' // Make sure use string for tag
 	}
 
-	stage{
+	stages{
 		stage('Clone Repositry'){ 
 			// chekout the git Repository
 			script{ 
@@ -24,28 +24,28 @@ pipeline{
 		 }
 
 
-	stage('Build Docker Image'){
-		steps{
-			// Checkout the git repository
-			script{ 
-				try {
-					docker.build(DOCKER_IMAGE_NAME
-						 }catch (Exception e) {
-							echo "Failed to build Docker image ${e.message}
-							error "Failed to build Docker image
+		stage('Build Docker Image'){
+			steps{
+				// Checkout the git repository
+				script{ 
+					try {
+						docker.build(DOCKER_IMAGE_NAME
+							 }catch (Exception e) {
+								echo "Failed to build Docker image ${e.message}"
+								error "Failed to build Docker image"
 						 }
 					 }
 				 }
 		 }
 
-	stage("Push to DockerHub"){
-		steps{
-			// Log in to DockerHUb and push Docker image
-			script{
-				try{
-					withCredentials([usernamePassword(credentialsId: "jawadeshrinivas322022",
-					usernameVariable:'DOCKER_USERNAME', passwordVariable": 'DOCKER_PASSWARD' )]){
-						docker.image(DOCKER_IMAGE_NAME).push(IMAGE_TAG) 
+		stage("Push to DockerHub"){
+			steps{
+				// Log in to DockerHUb and push Docker image
+				script{
+					try{
+						withCredentials([usernamePassword(credentialsId: "jawadeshrinivas322022",
+						usernameVariable:'DOCKER_USERNAME', passwordVariable": 'DOCKER_PASSWARD' )]){
+							docker.image(DOCKER_IMAGE_NAME).push(IMAGE_TAG) 
 
 								}
 						 }
