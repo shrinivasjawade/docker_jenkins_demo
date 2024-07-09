@@ -29,7 +29,7 @@ pipeline{
 				// Checkout the git repository
 				script{ 
 					try {
-						dockerbuild(DOCKER_IMAGE_NAME)
+						docker.build(DOCKER_IMAGE_NAME)
 							 }catch(Exception e){
 								echo "Failed to build Docker image ${e.message}"
 								error "Failed to build Docker image"
