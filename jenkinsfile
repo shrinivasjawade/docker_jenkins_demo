@@ -4,7 +4,7 @@ pipeline{
 	environment{
 		// Define environment variable for git and dockerHub creedentials
 		GIT_REPOSITORY_URL = 'https://github.com/shrinivasjawade/docker_jenkins_demo.git'
-		DOCKER_IMAGE_NAME = 'docker userid/docker_jenkins_demo'
+		DOCKER_IMAGE_NAME = 'jawadeshrinivas322022/docker_jenkins_demo'
 		IMAGE_TAG = '1.0' // Make sure use string for tag
 	}
 
@@ -29,7 +29,7 @@ pipeline{
 				// Checkout the git repository
 				script{ 
 					try {
-						docker build(DOCKER_IMAGE_NAME)
+						dockerbuild(DOCKER_IMAGE_NAME)
 							 }catch(Exception e){
 								echo "Failed to build Docker image ${e.message}"
 								error "Failed to build Docker image"
