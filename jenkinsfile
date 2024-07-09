@@ -43,7 +43,7 @@ pipeline{
 				// Log in to DockerHUb and push Docker image
 				script{
 					try{
-						withCredentials([usernamePassword(credentialsId: 'jawadeshrinivas322022/******', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+						withCredentials([usernamePassword(credentialsId: 'secret_id', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                             docker.withRegistry('https://index.docker.io/v1/') {
 sh "echo \$DOCKER_PASSWORD | docker login -u \$DOCKER_USERNAME --password-stdin docker.io"
                                 docker.image(DOCKER_IMAGE_NAME).push(IMAGE_TAG)
