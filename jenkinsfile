@@ -41,7 +41,7 @@ pipeline{
 				script{
 					try{
 						withCredentials([usernamePassword(credentialsId: "jawadeshrinivas322022",
-						usernameVariable:'DOCKER_USERNAME', passwordVariable": 'DOCKER_PASSWARD', )]){
+						usernameVariable:'DOCKER_USERNAME', passwordVariable": 'DOCKER_PASSWARD')]){
 							docker.image(DOCKER_IMAGE_NAME).push(IMAGE_TAG) 
 
 								}
