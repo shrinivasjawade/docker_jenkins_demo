@@ -40,9 +40,7 @@ pipeline{
 				// Log in to DockerHUb and push Docker image
 				script{
 					try{
-						withCredentials([usernamePassword(credentialsId: "jawadeshrinivas322022",
-														usernameVariable:'DOCKER_USERNAME',
-														passwordVariable": 'DOCKER_PASSWARD')])
+						withCredentials([usernamePassword(credentialsId: "jawadeshrinivas322022",usernameVariable:'DOCKER_USERNAME',passwordVariable: 'DOCKER_PASSWARD')])
 						docker.image(DOCKER_IMAGE_NAME).push(IMAGE_TAG) 
 						 }catch (Exception e) {
                                  echo "Failed to build Docker image ${e.message}
